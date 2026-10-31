@@ -1,0 +1,1 @@
+Copied from the tool's recipes/ folder by create-redbelly-dapp. These are drafts: anything marked "verify" in a recipe.json is not pinned by Redbelly's documentation, so do not resolve it by guessing. Don't edit here; re-scaffold or copy the folder again to update.

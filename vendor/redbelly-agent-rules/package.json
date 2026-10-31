@@ -1,0 +1,43 @@
+{
+  "name": "@gatedpath/agent-rules",
+  "version": "0.2.1",
+  "description": "One source of truth for Redbelly Network agent rules, rendered to CLAUDE.md, AGENTS.md, Cursor MDC, Copilot instructions, GEMINI.md, llms.txt and llms-full.txt, plus the one table of failure messages the MCP server, the frontend kit and the site share.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gatedpath/builder-path.git",
+    "directory": "packages/agent-rules"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "type": "module",
+  "engines": {
+    "node": ">=18"
+  },
+  "main": "./dist/cjs/index.js",
+  "module": "./dist/esm/index.js",
+  "types": "./dist/esm/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/esm/index.d.ts",
+      "import": "./dist/esm/index.js",
+      "require": "./dist/cjs/index.js"
+    },
+    "./failures": {
+      "types": "./dist/esm/failures.d.ts",
+      "import": "./dist/esm/failures.js",
+      "require": "./dist/cjs/failures.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "bin": {
+    "redbelly-agent-rules": "dist/esm/cli.js"
+  },
+  "files": [
+    "dist",
+    "generated-samples",
+    "README.md"
+  ],
+  "preferUnplugged": true
+}

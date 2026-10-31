@@ -1,0 +1,56 @@
+{
+  "name": "event-tickets-with-an-age-gate",
+  "private": true,
+  "type": "module",
+  "description": "Identity-gated dApp on Redbelly Network, scaffolded by create-redbelly-dapp 0.2.1 (template: gated-erc20).",
+  "engines": {
+    "node": ">=20"
+  },
+  "workspaces": [
+    "web",
+    "vendor/redbelly-frontend-kit",
+    "vendor/redbelly-chains",
+    "vendor/redbelly-agent-rules",
+    "vendor/redbelly-preflight"
+  ],
+  "redbelly": {
+    "scaffolder": "0.2.1",
+    "vendor": {
+      "redbelly-frontend-kit": "0.2.1",
+      "redbelly-chains": "0.2.1",
+      "redbelly-agent-rules": "0.2.1",
+      "redbelly-preflight": "0.2.1"
+    }
+  },
+  "scripts": {
+    "doctor": "node vendor/redbelly-preflight/dist/doctor-cli.js --project .",
+    "contracts:install": "cd contracts && npm install && npm run install:forge-std",
+    "dev": "node scripts/dev.mjs",
+    "build": "cd contracts && forge build",
+    "test": "cd contracts && forge test",
+    "test:gas": "cd contracts && forge test --gas-report",
+    "snapshot": "cd contracts && forge snapshot",
+    "fmt": "cd contracts && forge fmt",
+    "lint:slither": "node scripts/slither.mjs",
+    "lint:aderyn": "cd contracts && aderyn .",
+    "preflight": "node scripts/preflight.mjs",
+    "gas": "node vendor/redbelly-preflight/dist/redbelly.js gas --project contracts",
+    "ship": "node vendor/redbelly-preflight/dist/redbelly.js ship --project contracts",
+    "rules:check": "node vendor/redbelly-agent-rules/dist/esm/cli.js --check --out . --only claude,agents,cursor,copilot,gemini",
+    "rules:write": "node vendor/redbelly-agent-rules/dist/esm/cli.js --out . --only claude,agents,cursor,copilot,gemini",
+    "chains:sync": "node scripts/chains-sync.mjs",
+    "abi:sync": "node scripts/abi-sync.mjs",
+    "web:dev": "npm run --workspace web dev",
+    "web:build": "npm run --workspace web build",
+    "anvil:fork": "anvil --fork-url https://governors.testnet.redbelly.network --chain-id 153"
+  },
+  "devDependencies": {
+    "@gatedpath/chains": "file:vendor/redbelly-chains"
+  },
+  "overrides": {
+    "@tanstack/react-query": "5.102.8",
+    "react": "19.3.0",
+    "react-dom": "19.3.0",
+    "viem": "2.56.3",
+    "wagmi": "3.7.7"
+  }}

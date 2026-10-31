@@ -1,0 +1,41 @@
+{
+  "name": "@gatedpath/preflight",
+  "version": "0.2.1",
+  "description": "Pre-flight checks before deploying to Redbelly Network (151 mainnet, 153 testnet): chain ID, deployer verification, Safe admin, compiler pins, secrets in git history, RBNT balance, Slither report.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gatedpath/builder-path.git",
+    "directory": "packages/preflight"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "type": "module",
+  "engines": {
+    "node": ">=18"
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "bin": {
+    "redbelly-preflight": "dist/cli.js",
+    "redbelly-doctor": "dist/doctor-cli.js",
+    "redbelly": "dist/redbelly.js"
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "dependencies": {
+    "@gatedpath/agent-rules": "file:../redbelly-agent-rules",
+    "@gatedpath/chains": "file:../redbelly-chains"
+  },
+  "preferUnplugged": true
+}

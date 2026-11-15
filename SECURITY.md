@@ -14,8 +14,8 @@ The programme in PLAN.md section 6 of the Redbelly Development Tool, applied her
 - Every gated function has tests in all five credential states (valid, expired, revoked,
   wrong jurisdiction, never issued) on `GatedTest`. A gate with fewer is untested and CI
   won't hide it: the test files are part of the build.
-- Fuzz and invariant suites run in CI on every push. Slither and Aderyn run too; a finding is
-  fixed or written up in THREAT-MODEL.md with the reason it stays.
+- Fuzz and invariant suites run in CI on every push. Slither runs too and fails the build at
+  medium severity; a finding is fixed or written up in THREAT-MODEL.md with the reason it stays.
 - Admin roles belong to a Safe 1.4.1 with a threshold of two or more. The deploy script
   refuses chain 151 otherwise, and `npm run preflight` shows the refusal before anything is
   signed.

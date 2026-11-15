@@ -40,7 +40,8 @@ report location and the number.
 
 ## Review
 
-Slither and Aderyn findings, each fixed or kept with a written reason. Second-person review
+Slither findings, each fixed or kept with a written reason (Aderyn's too, if you still have a
+copy: Cyfrin retired it in November 2026). Second-person review
 record. Audit scope and report when there is one.
 
 ## Deploy

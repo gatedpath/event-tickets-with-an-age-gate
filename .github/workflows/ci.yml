@@ -1,5 +1,5 @@
 # CI for event-tickets-with-an-age-gate. Every action is pinned to a release tag. Jobs: build and test
-# (unit, fuzz, invariant), Slither, Aderyn, a gas snapshot diff on pull requests, the rules-file
+# (unit, fuzz, invariant), Slither, a gas snapshot diff on pull requests, the rules-file
 # drift check, and the web build. Nothing here holds a key or deploys anything.
 name: ci
 
@@ -83,25 +83,10 @@ jobs:
           slither-version: 0.11.6
           fail-on: medium
 
-  aderyn:
-    name: aderyn
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4.2.2
-      - uses: foundry-rs/foundry-toolchain@v1.5.0
-        with:
-          version: ${{ env.FOUNDRY_VERSION }}
-      - uses: actions/setup-node@v4.4.0
-        with:
-          node-version: 22
-      - run: cd contracts && npm install --no-audit --no-fund && npm run install:forge-std
-      - name: Run Aderyn (fails on high severity)
-        run: cd contracts && npx --yes @cyfrin/aderyn@0.6.8 . --no-snippets
-      - uses: actions/upload-artifact@v4.6.2
-        with:
-          name: aderyn-report
-          path: contracts/report.md
-          if-no-files-found: ignore
+  # The aderyn job was removed on 15 November 2026: Cyfrin retired Aderyn and withdrew its binaries and npm archives
+  # (the release notes of aderyn-v0.6.8 say so; npm marks every version "no longer supported" since 12 November), so
+  # `npx @cyfrin/aderyn` fails in a few seconds on every run. Slither above still fails the build at medium severity.
+  # A copy already installed keeps working: `npm run lint:aderyn` locally.
 
   rules-files:
     name: agent rules files match the generator
